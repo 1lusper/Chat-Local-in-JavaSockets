@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="Content-Security-Policy"
-    content="default-src 'self'; img-src 'self' https://i.imgur.com https://media.licdn.com data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src 'self'; object-src 'none'; frame-ancestors 'self'; upgrade-insecure-requests">
+    content="default-src 'self'; img-src 'self' https://i.imgur.com https://media.licdn.com data:; style-src 'self' 'nonce-TSSTYLE' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'nonce-TSSCRIPT'; connect-src 'self'; object-src 'none'; frame-ancestors 'self'; upgrade-insecure-requests">
   <title>Task Solutions | Automação de Bots, Desenvolvimento de Sites & Presença Digital Completa</title>
 
   <!-- SEO base -->
@@ -40,7 +40,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
-  <style>
+  <style nonce="TSSTYLE">
     :root {
       --bg: #020617;
       --bg-soft: #020617;
@@ -1324,7 +1324,7 @@
     </svg>
   </a>
 
-  <script>
+  <script nonce="TSSCRIPT">
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
