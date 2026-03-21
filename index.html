@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; img-src 'self' https://i.imgur.com https://media.licdn.com data:; style-src 'self' 'nonce-TSSTYLE' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'nonce-TSSCRIPT'; connect-src 'self'; object-src 'none'; frame-ancestors 'self'; upgrade-insecure-requests">
+  <title>Task Solutions | Automação de Bots, Desenvolvimento de Sites & Presença Digital Completa</title>
+
+  <!-- SEO base -->
+  <meta name="description"
+    content="Task Solutions — automação de bots para Discord, desenvolvimento de sites modernos e gestão de presença digital completa para marcas que querem crescer na internet." />
+  <meta name="keywords"
+    content="Task Solutions, automação de bots, bot Discord, desenvolvimento de sites, criação de sites, social media, presença digital, marketing digital, tecnologia" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title"
+    content="Task Solutions | Automação de Bots, Desenvolvimento de Sites & Presença Digital" />
+  <meta property="og:description"
+    content="Bots inteligentes, sites rápidos e presença digital estratégica — tudo integrado para sua marca crescer com tecnologia." />
+  <meta property="og:image" content="https://i.imgur.com/43oTfVd.png" />
+  <meta property="og:url" content="https://tasksolutions.com.br" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title"
+    content="Task Solutions | Automação de Bots, Desenvolvimento de Sites & Presença Digital" />
+  <meta name="twitter:description"
+    content="Automação avançada, sites profissionais e social media para elevar a autoridade da sua marca." />
+  <meta name="twitter:image" content="https://i.imgur.com/43oTfVd.png" />
+
+  <!-- Favicon / Icons -->
+  <link rel="icon" type="image/png" href="https://i.imgur.com/vvxQqGN.png" />
+  <link rel="apple-touch-icon" href="https://i.imgur.com/vvxQqGN.png" />
+  <meta name="theme-color" content="#0ea5ff" />
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style nonce="TSSTYLE">
+    :root {
+      --bg: #020617;
+      --bg-soft: #020617;
+      --panel: #020617;
+      --fg: #e5e7eb;
+      --muted: #9ca3af;
+      --brand: #2563eb;
+      --brand-soft: #0ea5ff;
+      --border-soft: rgba(148, 163, 184, 0.35);
+      --glow: rgba(37, 99, 235, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      color: var(--fg);
+      background:
+        radial-gradient(900px 900px at 0% 0%, rgba(14, 165, 255, 0.12), transparent 60%),
+        radial-gradient(900px 900px at 100% 100%, rgba(37, 99, 235, 0.22), transparent 60%),
+        var(--bg);
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 1100px;
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.98));
+      border-radius: 26px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow:
+        0 24px 80px rgba(15, 23, 42, 0.9),
+        0 0 0 1px rgba(15, 23, 42, 0.8);
+      padding: 22px 22px 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.09), transparent 60%);
+      opacity: 0.7;
+      pointer-events: none;
+      mix-blend-mode: screen;
+      animation: pageGlow 12s ease-in-out infinite;
+    }
+
+    /* NAV */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 14px;
+      border-radius: 18px;
+      background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.16), transparent 55%);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      position: relative;
+      z-index: 1;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .nav-logo {
+      width: 46px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 10px 25px var(--glow));
+    }
+
+    .nav-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .nav-title {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #f9fafb;
+    }
+
+    .nav-kicker {
+      font-size: 13px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--brand-soft), var(--brand));
+      color: #f9fafb;
+      border-color: rgba(56, 189, 248, 0.8);
+      box-shadow: 0 14px 30px rgba(37, 99, 235, 0.5);
+      background-size: 200% 200%;
+      animation: btnShine 8s ease infinite;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 38px rgba(37, 99, 235, 0.7);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--fg);
+      border-color: rgba(148, 163, 184, 0.6);
+    }
+
+    .btn-ghost:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 26px rgba(15, 23, 42, 0.9);
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 26px;
+      padding: 18px 14px 6px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-main {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .badge {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 11px;
+      color: #e5f6ff;
+    }
+
+    .hero-title {
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+      color: #f9fafb;
+      text-shadow: 0 0 18px rgba(37, 99, 235, 0.4);
+      position: relative;
+    }
+
+    .hero-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 72px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--brand-soft), transparent);
+      box-shadow: 0 0 12px rgba(37, 99, 235, 0.7);
+      opacity: 0.9;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 34rem;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .hero-secondary-text {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* Serviços */
+    .services-box {
+      margin-top: 12px;
+      padding: 14px 14px 10px;
+      border-radius: 18px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.11), transparent 55%), rgba(15, 23, 42, 0.95);
+    }
+
+    .services-label {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(148, 163, 184, 0.9);
+      margin-bottom: 8px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .service-card {
+      background: linear-gradient(140deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.92));
+      border-radius: 14px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      padding: 10px 10px 9px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease, background 0.16s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(56, 189, 248, 0.85);
+      box-shadow: 0 12px 26px rgba(15, 23, 42, 0.95);
+    }
+
+    .service-head {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .service-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+    }
+
+    .service-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .service-text {
+      font-size: 12px;
+      color: #9ca3af;
+      line-height: 1.45;
+    }
+
+    /* Coluna da direita - Logo */
+    .hero-side {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-inline: 4px;
+      perspective: 900px;
+    }
+
+    .hero-logo-wrap {
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 10px;
+      border-radius: 26px;
+      background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.45), rgba(15, 23, 42, 0.98));
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.35), 0 26px 60px rgba(15, 23, 42, 0.95);
+      overflow: hidden;
+      animation: neonPulse 5s ease-in-out infinite;
+      transform-style: preserve-3d;
+    }
+
+    .hero-logo-wrap::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: linear-gradient(120deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.02));
+      opacity: 0.4;
+      transform: translate3d(-40%, -40%, 1px) skewX(-18deg);
+      mix-blend-mode: screen;
+      animation: glassSweep 7s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .hero-logo-wrap::after {
+      content: "";
+      position: absolute;
+      top: -20%;
+      left: -60%;
+      width: 40%;
+      height: 140%;
+      background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.85), transparent);
+      opacity: 0;
+      transform: translate3d(-100%, 0, 2px) skewX(-25deg);
+      pointer-events: none;
+    }
+
+    .hero-logo-wrap:hover {
+      transform: rotateY(10deg) translateY(-4px);
+    }
+
+    .hero-logo-wrap:hover::after {
+      opacity: 0.9;
+      transform: translate3d(260%, 0, 2px) skewX(-25deg);
+      transition: transform 0.9s ease, opacity 0.9s ease;
+    }
+
+    .hero-logo {
+      width: 280px;
+      max-width: 80%;
+      height: auto;
+      filter: drop-shadow(0 20px 45px rgba(15, 23, 42, 0.95));
+      border-radius: 20px;
+      transition: transform 0.3s ease, filter 0.3s ease;
+      animation: floatLogo 6s ease-in-out infinite, logoPulse 4s ease-in-out infinite;
+      transform-origin: center;
+      backface-visibility: hidden;
+    }
+
+    .hero-logo:hover {
+      filter: drop-shadow(0 32px 70px rgba(15, 23, 42, 1));
+    }
+
+    .hero-note {
+      font-size: 11px;
+      color: #6b7280;
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    /* Empresas que confiam */
+    .trust {
+      margin-top: 18px;
+      padding: 14px 16px 12px;
+      border-radius: 18px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.96);
+      position: relative;
+      z-index: 1;
+    }
+
+    .trust-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #e5e7eb;
+      margin-bottom: 10px;
+    }
+
+    .trust-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--brand-soft);
+      box-shadow: 0 0 12px var(--glow);
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      align-items: center;
+      justify-items: center;
+    }
+
+    .trust-logo {
+      max-height: 56px;
+      max-width: 100%;
+      object-fit: contain;
+      filter: grayscale(100%) contrast(1.05);
+      opacity: 0.9;
+      transition: filter 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .trust-logo:hover {
+      filter: grayscale(0%) brightness(1.08);
+      opacity: 1;
+      transform: translateY(-2px);
+    }
+
+    .trust-logo--bigger {
+      max-height: 88px;
+    }
+
+    /* Galeria */
+    .gallery-section {
+      margin-top: 18px;
+      padding: 14px 16px 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.18), rgba(15, 23, 42, 0.98));
+      position: relative;
+      z-index: 1;
+    }
+
+    .gallery-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #e5e7eb;
+      margin-bottom: 10px;
+    }
+
+    .gallery-row {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.9);
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.9);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transform: scale(1.02);
+      transition: transform 0.25s ease, opacity 0.25s ease;
+      opacity: 0.95;
+    }
+
+    .gallery-item::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.3), transparent 55%);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-3px) scale(1.01);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.95), 0 0 18px rgba(56, 189, 248, 0.35);
+      border-color: rgba(56, 189, 248, 0.85);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.06);
+      opacity: 1;
+    }
+
+    .gallery-item:hover::after {
+      opacity: 1;
+    }
+
+    /* Equipe / Dev section */
+    .dev-section {
+      margin-top: 32px;
+      padding: 22px 18px 20px;
+      border-radius: 22px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.32), rgba(15, 23, 42, 0.98));
+      box-shadow: 0 22px 50px rgba(15, 23, 42, 0.9);
+      position: relative;
+      z-index: 1;
+    }
+
+    .dev-section-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #e5e7eb;
+      text-shadow: 0 0 12px rgba(37, 99, 235, 0.35);
+    }
+
+    .dev-section-subtitle {
+      font-size: 13px;
+      color: #9ca3af;
+      margin-bottom: 18px;
+    }
+
+    .dev-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      align-items: flex-start;
+      justify-items: center;
+    }
+
+    .dev-img-top {
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .dev-card {
+      width: 100%;
+      padding: 16px;
+      border-radius: 16px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+      backdrop-filter: blur(6px);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .dev-card:hover {
+      transform: translateY(-6px) scale(1.03) rotateX(4deg) rotateY(-4deg);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45), 0 0 22px rgba(56, 189, 248, 0.6);
+      border-color: rgba(56, 189, 248, 0.85);
+    }
+
+    .dev-card img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 14px;
+      margin-bottom: 12px;
+      box-shadow: 0 0 18px rgba(37, 99, 235, 0.6);
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      transition: transform 0.35s ease;
+    }
+
+    .dev-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .dev-bio {
+      font-size: 13px;
+      color: #9ca3af;
+      margin-top: 6px;
+      line-height: 1.45;
+    }
+
+    .dev-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .dev-role-tag {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.7);
+      background: rgba(15, 23, 42, 0.95);
+      color: #e0f2fe;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .dev-bio {
+      font-size: 13px;
+      color: #9ca3af;
+      margin-top: 6px;
+      line-height: 1.45;
+    }
+
+    .dev-social-row {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: auto;
+    }
+
+    .dev-social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.96);
+      color: #e5e7eb;
+      text-decoration: none;
+      transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+      margin-top: 10px;
+    }
+
+    .dev-social-link svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .dev-social-link:hover {
+      transform: translateY(-1px) scale(1.05);
+      border-color: rgba(56, 189, 248, 0.9);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.7);
+      background: rgba(15, 23, 42, 1);
+    }
+
+    .dev-img-top {
+      object-position: top;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 8px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--muted);
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 36px;
+      align-items: flex-start;
+    }
+
+    .footer-col-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #e5e7eb;
+      margin-bottom: 6px;
+    }
+
+    .footer-link {
+      color: var(--muted);
+      text-decoration: none;
+      display: flex;
+      width: 100%;
+      align-items: center;
+      gap: 6px;
+      margin-top: 6px;
+      transition: color 0.18s ease;
+      font-size: 13px;
+    }
+
+    .footer-link:hover {
+      color: var(--brand-soft);
+    }
+
+    .footer-small {
+      font-size: 12px;
+      color: #6b7280;
+      text-align: left;
+    }
+
+    .footer-copy {
+      text-align: center;
+      margin-top: 12px;
+      opacity: 0.9;
+    }
+
+    .footer-icon {
+      width: 14px;
+      height: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* WhatsApp FAB */
+    .whats-fab {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 50;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      background: #25D366;
+      color: #f9fafb;
+      text-decoration: none;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .whats-fab:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.8);
+    }
+
+    .whats-fab svg {
+      width: 22px;
+      height: 22px;
+      display: block;
+    }
+
+    /* Responsivo */
+    @media (max-width: 900px) {
+      .page {
+        padding: 18px 16px 22px;
+        border-radius: 18px;
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .nav-kicker {
+        white-space: normal;
+      }
+
+      .nav-actions {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 8px;
+      }
+
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        row-gap: 20px;
+      }
+
+      .hero-main {
+        text-align: left;
+      }
+
+      .hero-subtitle {
+        max-width: none;
+      }
+
+      .hero-side {
+        margin-top: 6px;
+      }
+
+      .hero-logo {
+        max-width: 240px;
+      }
+
+      .services-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: minmax(0, 1fr);
+        row-gap: 20px;
+      }
+
+      .footer-small {
+        text-align: left;
+      }
+
+      .dev-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .gallery-row {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      .trust-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .gallery-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 520px) {
+      .nav-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-title {
+        font-size: 24px;
+      }
+
+      .gallery-row {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* Animações */
+    @keyframes floatLogo {
+      0% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-6px);
+      }
+
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pageGlow {
+      0% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      50% {
+        opacity: 1;
+        transform: translate(-50%, -52%) scale(1.05);
+      }
+
+      100% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+
+    @keyframes logoPulse {
+      0% {
+        filter: drop-shadow(0 20px 45px rgba(37, 99, 235, 0.25));
+        transform: scale(1);
+      }
+
+      50% {
+        filter: drop-shadow(0 30px 65px rgba(37, 99, 235, 0.55));
+        transform: scale(1.04);
+      }
+
+      100% {
+        filter: drop-shadow(0 20px 45px rgba(37, 99, 235, 0.25));
+        transform: scale(1);
+      }
+    }
+
+    @keyframes neonPulse {
+      0%,
+      100% {
+        box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.2), 0 22px 60px rgba(15, 23, 42, 0.9);
+      }
+
+      50% {
+        box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.55), 0 30px 80px rgba(15, 23, 42, 1);
+      }
+    }
+
+    @keyframes glassSweep {
+      0% {
+        transform: translate3d(-60%, -40%, 1px) skewX(-18deg);
+        opacity: 0;
+      }
+
+      30% {
+        opacity: 0.45;
+      }
+
+      50% {
+        transform: translate3d(40%, -20%, 1px) skewX(-18deg);
+        opacity: 0.6;
+      }
+
+      80% {
+        opacity: 0;
+      }
+
+      100% {
+        transform: translate3d(80%, 0, 1px) skewX(-18deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes btnShine {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <!-- NAV -->
+    <header class="nav" aria-label="Barra de navegação principal">
+      <div class="nav-left">
+        <img class="nav-logo" src="https://i.imgur.com/43oTfVd.png" alt="Logo Task Solutions" loading="lazy" decoding="async" />
+        <div class="nav-text">
+          <span class="nav-title">Task Solutions</span>
+          <span class="nav-kicker">Bots inteligentes · Sites de alta performance</span>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <a class="btn btn-ghost"
+          href="mailto:contato@tasksolutions.com.br?subject=Pedido%20de%20Servi%C3%A7o%20-%20Task%20Solutions"
+          target="_blank" rel="noopener noreferrer">
+          <span>E-mail</span>
+        </a>
+        <a class="btn btn-primary" href="https://discord.gg/nf2taqe4" target="_blank" rel="noopener noreferrer">
+          <span>Discord</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- HERO + SERVIÇOS -->
+    <main>
+      <section class="hero">
+        <section class="hero-main" aria-labelledby="hero-title">
+          <div class="badges" aria-label="Principais frentes de atuação">
+            <span class="badge">Automação no Discord</span>
+            <span class="badge">Sites & Landpages</span>
+            <span class="badge">Lojas iFood & Delivery</span>
+            <span class="badge">Design Gráfico & Social Media</span>
+          </div>
+
+          <h1 id="hero-title" class="hero-title">
+            Automação avançada, sites, landpages e presença digital completa para a sua marca.
+          </h1>
+
+          <p class="hero-subtitle">
+            Atuamos em todas as frentes essenciais para o seu negócio online: automação avançada no Discord, criação de
+            sites e landpages com pagamentos integrados, estruturação de lojas iFood e delivery, design gráfico e social
+            media — além de consultoria personalizada para demandas específicas.
+          </p>
+
+          <div class="hero-cta-row">
+            <a class="btn btn-primary" href="https://discord.gg/nf2taqe4" target="_blank"
+              rel="noopener noreferrer">Discord</a>
+            <a class="btn btn-ghost"
+              href="mailto:contato@tasksolutions.com.br?subject=Pedido%20de%20Servi%C3%A7o%20-%20Task%20Solutions"
+              target="_blank" rel="noopener noreferrer">Fale conosco por e-mail</a>
+          </div>
+
+          <p class="hero-secondary-text">
+            Bots, sites, identidade visual, lojas iFood e consultoria personalizada — tudo configurado para entregar
+            resultados reais com simplicidade e eficiência.
+          </p>
+
+          <section class="services-box" aria-label="Serviços da Task Solutions">
+            <p class="services-label">Serviços</p>
+            <div class="services-grid">
+              <article class="service-card">
+                <div class="service-head">
+                  <div class="service-icon" aria-hidden="true">🤖</div>
+                  <h2 class="service-title">Bots inteligentes</h2>
+                </div>
+                <p class="service-text">
+                  Automação completa para servidores: moderação, tickets inteligentes, comandos personalizados,
+                  integrações com APIs e fluxos que reduzem tarefas manuais.
+                </p>
+              </article>
+
+              <article class="service-card">
+                <div class="service-head">
+                  <div class="service-icon" aria-hidden="true">💳</div>
+                  <h2 class="service-title">Sites & landpages com pagamentos</h2>
+                </div>
+                <p class="service-text">
+                  Criação de sites e páginas de vendas focadas em conversão, com formulários, integrações de pagamento
+                  (Pix, cartão, gateways) e estrutura pronta para anunciar.
+                </p>
+              </article>
+
+              <article class="service-card">
+                <div class="service-head">
+                  <div class="service-icon" aria-hidden="true">🎨</div>
+                  <h2 class="service-title">Design gráfico & identidade</h2>
+                </div>
+                <p class="service-text">
+                  Artes profissionais para feeds, stories, banners, capas, logotipos e materiais visuais que mantêm a
+                  identidade da sua marca alinhada em todos os canais.
+                </p>
+              </article>
+
+              <article class="service-card">
+                <div class="service-head">
+                  <div class="service-icon" aria-hidden="true">📱</div>
+                  <h2 class="service-title">Social Media & conteúdo</h2>
+                </div>
+                <p class="service-text">
+                  Apoio na criação de pautas, layouts e peças para redes sociais, reforçando posicionamento, frequência
+                  de postagens e conexão com o público certo.
+                </p>
+              </article>
+
+              <article class="service-card">
+                <div class="service-head">
+                  <div class="service-icon" aria-hidden="true">🍽️</div>
+                  <h2 class="service-title">Lojas iFood & delivery</h2>
+                </div>
+                <p class="service-text">
+                  Auxílio na estruturação de lojas no iFood: cadastro, cardápio organizado, fotos, descrições, combos e
+                  suporte na otimização da apresentação para atrair mais pedidos.
+                </p>
+              </article>
+
+              <article class="service-card">
+                <div class="service-head">
+                  <div class="service-icon" aria-hidden="true">🛠️</div>
+                  <h2 class="service-title">Serviços Personalizados & Consultoria</h2>
+                </div>
+                <p class="service-text">
+                  Consultoria direta e soluções sob medida: suporte técnico, orientação estratégica e automação para
+                  resolver demandas de forma rápida, simples e eficiente.
+                </p>
+              </article>
+            </div>
+          </section>
+        </section>
+
+        <aside class="hero-side" aria-label="Identidade visual da Task Solutions">
+          <div class="hero-logo-wrap">
+            <img class="hero-logo" src="https://i.imgur.com/43oTfVd.png" alt="Marca Task Solutions" loading="lazy" decoding="async" />
+          </div>
+          <p class="hero-note">
+            Tecnologia, automação, design e e-commerce trabalhando juntos para impulsionar o seu projeto.
+          </p>
+        </aside>
+      </section>
+
+      <!-- Empresas que confiam -->
+      <section class="trust" aria-label="Empresas que confiam na Task Solutions">
+        <div class="trust-title">
+          <span class="trust-dot"></span>
+          <span>Empresas que já confiam no nosso trabalho</span>
+        </div>
+        <div class="trust-grid">
+          <img class="trust-logo" src="https://i.imgur.com/L1se61i.png" alt="Logo empresa parceira 1" loading="lazy"
+            decoding="async" />
+          <img class="trust-logo trust-logo--bigger" src="https://i.imgur.com/3RupX3D.png"
+            alt="Logo empresa parceira 2" loading="lazy" decoding="async" />
+          <img class="trust-logo" src="https://i.imgur.com/V2MjUm6.png" alt="Logo empresa parceira 3" loading="lazy"
+            decoding="async" />
+        </div>
+      </section>
+
+      <!-- Galeria -->
+      <section class="gallery-section" aria-label="Galeria de serviços da Task Solutions">
+        <h3 class="gallery-title">Galeria de serviços</h3>
+        <div class="gallery-row">
+          <div class="gallery-item">
+            <img src="https://i.imgur.com/N1byCka.png" alt="Serviço Task Solutions 1" loading="lazy" decoding="async" />
+          </div>
+          <div class="gallery-item">
+            <img src="https://i.imgur.com/LgtjnuC.png" alt="Serviço Task Solutions 2" loading="lazy" decoding="async" />
+          </div>
+          <div class="gallery-item">
+            <img src="https://i.imgur.com/i73oOWs.png" alt="Serviço Task Solutions 3" loading="lazy" decoding="async" />
+          </div>
+          <div class="gallery-item">
+            <img src="https://i.imgur.com/A3dQuKW.png" alt="Serviço Task Solutions 4" loading="lazy" decoding="async" />
+          </div>
+          <div class="gallery-item">
+            <img src="https://i.imgur.com/ODvtZhe.png" alt="Serviço Task Solutions 5" loading="lazy" decoding="async" />
+          </div>
+          <div class="gallery-item">
+            <img src="https://i.imgur.com/ipCmSMR.png" alt="Serviço Task Solutions 6" loading="lazy" decoding="async" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Equipe -->
+      <section class="dev-section" aria-label="Equipe Task Solutions">
+        <h2 class="dev-section-title">Equipe de Desenvolvimento</h2>
+        <p class="dev-section-subtitle">
+          Um time multidisciplinar unindo desenvolvimento, automação e design para criar soluções digitais completas.
+        </p>
+
+        <div class="dev-grid">
+          <!-- Victor Monteiro -->
+          <div class="dev-card">
+            <img
+              src="https://media.licdn.com/dms/image/v2/D4D03AQHpnodKTYNIKQ/profile-displayphoto-crop_800_800/B4DZqXlsRJKQAI-/0/1763479832034?e=1765411200&v=beta&t=sPOHGfCCqbndXiYDHyHbtAHuBRAGXL4L5EYAOfrBGCs"
+              alt="Victor Monteiro" loading="lazy" decoding="async">
+            <div class="dev-name">
+              <h3>Victor Monteiro</h3>
+              <span class="dev-role-tag">Designer Gráfico</span>
+            </div>
+            <p class="dev-bio">
+              Estudante de ADS e designer gráfico responsável pela identidade visual da Task Solutions. Cria artes,
+              banners, logos, paletas e padrões visuais garantindo estética profissional e alinhada com a marca.
+            </p>
+            <div class="dev-social-row">
+              <a href="https://www.linkedin.com/in/victor-monteiro-965a6a222/" target="_blank"
+                rel="noopener noreferrer" class="dev-social-link" aria-label="LinkedIn de Victor Monteiro">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="currentColor"
+                    d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001 2.5 2.5 0 0 1 0-5.001zM3 8.98h3.96V21H3V8.98zM9.69 8.98H13v1.63h.05c.46-.87 1.57-1.79 3.23-1.79 3.45 0 4.08 2.27 4.08 5.22V21h-3.96v-5.62c0-1.34-.02-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97V21H9.69V8.98z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Luís Pereira -->
+          <div class="dev-card">
+            <img class="dev-img-top" src="https://i.imgur.com/54Z62pV.jpeg" alt="Luís Pereira" loading="lazy"
+              decoding="async">
+            <div class="dev-name">
+              <h3>Luís Pereira</h3>
+              <span class="dev-role-tag">Front-End & Social Media</span>
+            </div>
+            <p class="dev-bio">
+              Estudante de ADS com formação técnica em Informática e experiência em manutenção mobile, suporte e criação
+              de páginas web. Atua com HTML, CSS e lógica de programação.
+            </p>
+            <div class="dev-social-row">
+              <a href="https://www.linkedin.com/in/luispereiradev/" target="_blank" rel="noopener noreferrer"
+                class="dev-social-link" aria-label="LinkedIn de Luís Pereira">
+                <svg viewBox="0 0 24 24">
+                  <path fill="currentColor"
+                    d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001 2.5 2.5 0 0 1 0-5.001zM3 8.98h3.96V21H3V8.98zM9.69 8.98H13v1.63h.05c.46-.87 1.57-1.79 3.23-1.79 3.45 0 4.08 2.27 4.08 5.22V21h-3.96v-5.62c0-1.34-.02-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97V21H9.69V8.98z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Donizete Mariano -->
+          <div class="dev-card">
+            <img src="https://i.imgur.com/caMPXNu.jpeg" alt="Donizete Mariano" loading="lazy" decoding="async">
+            <div class="dev-name">
+              <h3>Donizete Mariano</h3>
+              <span class="dev-role-tag">DEV & GESTÃO</span>
+            </div>
+            <p class="dev-bio">
+              Desenvolvedor Python com experiência em social media e copywriting. Cuida da gestão interna da Task
+              Solutions, garantindo processos ágeis e entregas consistentes.
+            </p>
+            <div class="dev-social-row">
+              <a href="https://www.instagram.com/donijesuss?igsh=OGNwYjBsY3cwcWp0" target="_blank"
+                rel="noopener noreferrer" class="dev-social-link" aria-label="Instagram de Donizete Mariano">
+                <svg viewBox="0 0 24 24">
+                  <path fill="currentColor"
+                    d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3.5A5.5 5.5 0 1 0 17.5 13 5.5 5.5 0 0 0 12 7.5zm0 2A3.5 3.5 0 1 1 8.5 13 3.5 3.5 0 0 1 12 9.5zm4.8-3.8a1.2 1.2 0 1 0 1.2 1.2 1.2 1.2 0 0 0-1.2-1.2z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer>
+      <div class="footer-grid">
+        <div>
+          <p class="footer-col-title">Sobre a Task Solutions</p>
+          <p class="footer-small">
+            Combinamos automação, tecnologia e design para entregar soluções digitais completas: bots avançados, sites
+            profissionais e visual estratégico para marcas que querem crescer na internet.
+          </p>
+        </div>
+
+        <div>
+          <p class="footer-col-title">Contato</p>
+          <a class="footer-link" href="mailto:contato@tasksolutions.com.br">
+            <span class="footer-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="currentColor"
+                  d="M20 4H4a2 2 0 0 0-2 2v.3l10 6 10-6V6a2 2 0 0 0-2-2Zm0 5.2-8 4.8L4 9.2V18a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9.2Z" />
+              </svg>
+            </span>
+            <span>contato@tasksolutions.com.br</span>
+          </a>
+          <a class="footer-link" href="https://wa.me/5521999999999" target="_blank" rel="noopener noreferrer">
+            <span class="footer-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="currentColor"
+                  d="M20 15.5c-.8 0-1.7-.1-2.4-.4-.2-.1-.5 0-.7.1l-1.6 1.6a15 15 0 0 1-6.8-6.8l1.6-1.6c.2-.2.2-.4.1-.7-.3-.7-.4-1.6-.4-2.4C8 4.4 7.6 4 7.1 4H4.5C4 4 3.6 4.4 3.6 4.9 3.6 13.2 10.8 20.4 19.1 20.4c.5 0 .9-.4 .9-.9v-2.6c0-.5-.4-.9-1-.9Z" />
+              </svg>
+            </span>
+            <span>(21) 99999-9999</span>
+          </a>
+        </div>
+
+        <div>
+          <p class="footer-col-title">Redes</p>
+          <a class="footer-link" href="https://discord.gg/nf2taqe4" target="_blank" rel="noopener noreferrer">
+            <span class="footer-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="currentColor"
+                  d="M20 4a16 16 0 0 0-4.3-1.3l-.2.4A14 14 0 0 1 12 3c-1.2 0-2.4.1-3.5.4l-.2-.4A16 16 0 0 0 4 4C1.8 7.2 1 10.3 1 13.3 1 18 4.1 20.3 7.2 21l1-2.2c-.6-.2-1.1-.5-1.6-.8l.3-.2c.3.2.7.4 1.1.5.9.4 1.9.7 3 .7s2.1-.3 3-.7c.4-.1.8-.3 1.1-.5l.3.2c-.5.3-1 .6-1.6.8l1 2.2c3.1-.7 6.2-3 6.2-7.7 0-3-.8-6.1-3-9.3Z" />
+              </svg>
+            </span>
+            <span>Discord</span>
+          </a>
+          <a class="footer-link" href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+            <span class="footer-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="currentColor"
+                  d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.3 2.4.5.6.2 1 .5 1.5 1 .5.5.8.9 1 1.5.2.5.4 1.2.5 2.4.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.9-.5 2.4-.2.6-.5 1-1 1.5-.5.5-.9.8-1.5 1-.5.2-1.2.4-2.4.5-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.9-.3-2.4-.5-.6-.2-1-.5-1.5-1-.5-.5-.8-.9-1-1.5-.2-.5-.4-1.2-.5-2.4C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.9.5-2.4.2-.6.5-1 1-1.5.5-.5.9-.8 1.5-1 .5-.2 1.2-.4 2.4-.5C8.4 2.2 8.8 2.2 12 2.2" />
+              </svg>
+            </span>
+            <span>Instagram</span>
+          </a>
+          <a class="footer-link" href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+            <span class="footer-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="currentColor"
+                  d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001 2.5 2.5 0 0 1 0-5.001zM3 8.98h3.96V21H3V8.98zM9.69 8.98H13v1.63h.05c.46-.87 1.57-1.79 3.23-1.79 3.45 0 4.08 2.27 4.08 5.22V21h-3.96v-5.62c0-1.34-.02-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97V21H9.69V8.98z" />
+              </svg>
+            </span>
+            <span>LinkedIn</span>
+          </a>
+        </div>
+      </div>
+
+      <p class="footer-small footer-copy">
+        © <span id="year"></span> Task Solutions. Todos os direitos reservados.
+      </p>
+    </footer>
+  </div>
+
+  <!-- FAB WhatsApp -->
+  <a class="whats-fab" href="https://wa.me/5521999999999" target="_blank" rel="noopener noreferrer"
+    aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24">
+      <path fill="currentColor"
+        d="M20 15.5c-.8 0-1.7-.1-2.4-.4-.2-.1-.5 0-.7.1l-1.6 1.6a15 15 0 0 1-6.8-6.8l1.6-1.6c.2-.2.2-.4.1-.7-.3-.7-.4-1.6-.4-2.4C8 4.4 7.6 4 7.1 4H4.5C4 4 3.6 4.4 3.6 4.9 3.6 13.2 10.8 20.4 19.1 20.4c.5 0 .9-.4 .9-.9v-2.6c0-.5-.4-.9-1-.9Z" />
+    </svg>
+  </a>
+
+  <script nonce="TSSCRIPT">
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
